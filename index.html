@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -16,7 +15,8 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI, sans-serif;
+font-family:Segoe UI,sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -28,22 +28,16 @@ overflow-x:hidden;
 /* NAVBAR */
 
 header{
-
 position:fixed;
 top:0;
 width:100%;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 padding:16px 30px;
-
 background:rgba(0,0,0,0.65);
 backdrop-filter:blur(12px);
-
 z-index:1000;
-
 }
 
 .brand{
@@ -61,80 +55,82 @@ margin-left:20px;
 text-decoration:none;
 color:#aaa;
 font-size:14px;
+position:relative;
 }
 
-nav a:hover{
-color:#00e5ff;
+nav a::after{
+content:"";
+position:absolute;
+bottom:-4px;
+left:0;
+width:0;
+height:2px;
+background:#00e5ff;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 /* HERO */
 
 .hero{
-
 height:120vh;
-
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
 text-align:center;
 position:relative;
-
 padding:20px;
-
 }
 
 .brand-logo{
-
 width:260px;
 height:260px;
-
 border-radius:50%;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
 background:#111;
-
 box-shadow:
 0 0 80px #00e5ff44,
 0 0 150px #00e5ff22;
-
+animation:logoPulse 6s infinite ease-in-out;
 }
 
 .brand-logo img{
 width:70%;
 }
 
-/* LOGO SPOTLIGHT */
+@keyframes logoPulse{
 
-.brand-logo::after{
-
-content:"";
-
-position:absolute;
-
-width:420px;
-height:420px;
-
-background:radial-gradient(circle,#00e5ff22,transparent);
-
-z-index:-1;
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
 
 }
 
+/* LOGO SPOTLIGHT */
+
+.brand-logo::after{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+background:radial-gradient(circle,#00e5ff22,transparent);
+z-index:-1;
+}
+
+/* HERO TEXT */
+
 .hero h1{
-
 margin-top:25px;
-
 font-size:48px;
-
 background:linear-gradient(90deg,#00e5ff,#00ff9c);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 }
 
 .hero p{
@@ -143,134 +139,111 @@ max-width:520px;
 color:#aaa;
 }
 
-/* PARTICLE BG */
+/* SCROLL INDICATOR */
+
+.scroll-indicator{
+position:absolute;
+bottom:40px;
+font-size:12px;
+color:#aaa;
+animation:scrollHint 2s infinite;
+}
+
+@keyframes scrollHint{
+0%{opacity:0}
+50%{opacity:1}
+100%{opacity:0}
+}
+
+/* PARTICLES */
 
 canvas{
-
 position:absolute;
 top:0;
 left:0;
-
 z-index:-2;
-
 }
 
 /* SECTIONS */
 
 section{
-
 padding:120px 12%;
-
 opacity:0;
 transform:translateY(80px);
-
 transition:1s;
-
+position:relative;
 }
 
 section.show{
-
 opacity:1;
 transform:translateY(0);
-
 }
 
 .title{
-
 font-size:36px;
 margin-bottom:50px;
 text-align:center;
+}
 
+/* GLOW DIVIDER */
+
+section::before{
+content:"";
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:120px;
+height:2px;
+background:linear-gradient(90deg,transparent,#00e5ff,transparent);
 }
 
 /* PROJECT GRID */
 
 .projects{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
 gap:30px;
-
 }
 
 /* CARD */
 
 .card{
-
 background:rgba(20,20,20,0.7);
-
 border-radius:18px;
-
 overflow:hidden;
-
 backdrop-filter:blur(15px);
-
 border:1px solid #222;
-
-cursor:pointer;
-
 transition:0.4s;
-
+animation:cardFloat 6s infinite ease-in-out;
 }
 
-/* GLOW BORDER */
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-border-radius:18px;
-
-padding:1px;
-
-background:linear-gradient(120deg,#00e5ff,transparent);
-
--webkit-mask:
-linear-gradient(#000 0 0) content-box,
-linear-gradient(#000 0 0);
-
--webkit-mask-composite:xor;
-
-mask-composite:exclude;
-
-opacity:0.5;
-
+@keyframes cardFloat{
+0%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0)}
 }
 
-/* CARD IMAGE */
+/* IMAGE */
 
 .card-image{
-
 height:180px;
-
 background:#141414;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 }
 
 .card-image img{
-
 width:100%;
 height:100%;
 object-fit:cover;
-
 }
 
-/* CARD CONTENT */
+/* CONTENT */
 
 .card-content{
-
 padding:24px;
-
 }
 
 .card-content h3{
@@ -281,46 +254,29 @@ margin-bottom:8px;
 color:#aaa;
 }
 
-/* EXPAND MODE */
-
-.card.active{
-
-transform:scale(1.03);
-
-box-shadow:0 0 40px #00e5ff33;
-
-}
-
 /* FUTURE PLACEHOLDER */
 
 .coming{
-
 opacity:0.6;
-
 border:1px dashed #444;
-
 }
 
 /* FUTURE SECTION */
 
 .future{
-
 text-align:center;
 max-width:700px;
 margin:auto;
 color:#aaa;
-
 }
 
 /* FOOTER */
 
 footer{
-
 padding:40px;
 text-align:center;
 background:#050505;
 color:#666;
-
 }
 
 /* MOBILE */
@@ -355,19 +311,14 @@ grid-template-columns:1fr;
 <header>
 
 <div class="brand">
-
 <img src="logo.jpg">
-
 <b>Terminal Joint</b>
-
 </div>
 
 <nav>
-
 <a href="#vision">Vision</a>
 <a href="#projects">Projects</a>
 <a href="#future">Future</a>
-
 </nav>
 
 </header>
@@ -377,18 +328,16 @@ grid-template-columns:1fr;
 <canvas id="bg"></canvas>
 
 <div class="brand-logo">
-
 <img src="logo2.jpg">
-
 </div>
 
 <h1>Terminal Joint</h1>
 
 <p>
-
 Building digital systems, platforms and games.
-
 </p>
+
+<div class="scroll-indicator">scroll ↓</div>
 
 </div>
 
@@ -397,9 +346,7 @@ Building digital systems, platforms and games.
 <h2 class="title">Vision</h2>
 
 <p style="text-align:center;max-width:700px;margin:auto;color:#aaa;">
-
-Developing systems for the needs.
-
+Developing systems for real-world needs.
 </p>
 
 </section>
@@ -417,10 +364,10 @@ Developing systems for the needs.
 </div>
 
 <div class="card-content">
-
-<h3>Terminal Joint's CBT interface.</h3>
-<p>Practice for your Computer Based Test with real CBT user experience.</p>
-
+<h3>Terminal Joint CBT</h3>
+<p>
+Practice for Computer Based Tests with a realistic exam interface.
+</p>
 </div>
 
 </div>
@@ -430,10 +377,8 @@ Developing systems for the needs.
 <div class="card-image"></div>
 
 <div class="card-content">
-
 <h3>Future System</h3>
 <p>Coming soon</p>
-
 </div>
 
 </div>
@@ -443,10 +388,8 @@ Developing systems for the needs.
 <div class="card-image"></div>
 
 <div class="card-content">
-
 <h3>Future System</h3>
 <p>Coming soon</p>
-
 </div>
 
 </div>
@@ -460,16 +403,14 @@ Developing systems for the needs.
 <h2 class="title">Future Systems</h2>
 
 <p class="future">
-
-Describe upcoming platforms or technology ideas.
-
+Upcoming platforms and digital systems under development.
 </p>
 
 </section>
 
 <footer>
 
-© 2026 Terminal Joint 
+© 2026 Terminal Joint
 
 </footer>
 
@@ -486,24 +427,8 @@ sections.forEach(sec=>{
 let top=sec.getBoundingClientRect().top
 
 if(top<window.innerHeight-120){
-
 sec.classList.add("show")
-
 }
-
-})
-
-})
-
-/* TAP EXPAND CARDS */
-
-let cards=document.querySelectorAll(".card")
-
-cards.forEach(card=>{
-
-card.addEventListener("click",()=>{
-
-card.classList.toggle("active")
 
 })
 
@@ -512,23 +437,25 @@ card.classList.toggle("active")
 /* PARTICLES */
 
 let canvas=document.getElementById("bg")
-
 let ctx=canvas.getContext("2d")
 
+function resize(){
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
+}
+
+resize()
+window.addEventListener("resize",resize)
 
 let particles=[]
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 
 particles.push({
-
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 r:Math.random()*2,
-speed:Math.random()*0.5
-
+speed:Math.random()*0.6
 })
 
 }
@@ -562,5 +489,4 @@ animate()
 </script>
 
 </body>
-
 </html>
