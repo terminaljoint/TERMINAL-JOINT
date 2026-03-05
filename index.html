@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminal Joint</title>
+<title>Your Brand</title>
 
 <style>
 
@@ -12,7 +13,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
@@ -21,160 +22,270 @@ color:white;
 overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ---------- NAVBAR ---------- */
 
 header{
 position:fixed;
 top:0;
 width:100%;
-padding:15px 50px;
+padding:12px 20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.7);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
 
-.logo{
-font-size:22px;
-font-weight:bold;
-letter-spacing:1px;
+.logo-small{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-small img{
+width:35px;
+height:35px;
+object-fit:contain;
 }
 
 nav a{
-margin-left:25px;
+margin-left:20px;
 text-decoration:none;
 color:#aaa;
-transition:0.3s;
+font-size:14px;
 }
 
 nav a:hover{
 color:#00e5ff;
 }
 
-/* HERO */
+/* ---------- HERO ---------- */
 
 .hero{
+
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
+padding:20px;
+
 }
 
+/* MAIN BRAND LOGO */
+
+.brand-logo{
+
+width:260px;
+height:260px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+border-radius:50%;
+
+background:#111;
+
+box-shadow:
+0 0 40px #00e5ff55,
+0 0 80px #00e5ff33;
+
+margin-bottom:25px;
+
+transition:0.4s;
+
+}
+
+.brand-logo:hover{
+
+transform:scale(1.05);
+
+box-shadow:
+0 0 60px #00e5ff,
+0 0 120px #00e5ff66;
+
+}
+
+.brand-logo img{
+
+width:75%;
+height:75%;
+object-fit:contain;
+
+}
+
+/* HERO TEXT */
+
 .hero h1{
-font-size:60px;
+
+font-size:42px;
+margin-bottom:10px;
+
 background:linear-gradient(90deg,#00e5ff,#00ff9c);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
 }
 
 .hero p{
-margin-top:15px;
+
+max-width:500px;
 color:#bbb;
-max-width:600px;
+
 }
 
+/* BUTTON */
+
 .hero button{
+
 margin-top:25px;
-padding:14px 30px;
+
+padding:12px 28px;
+
 border:none;
+
+border-radius:25px;
+
 background:#00e5ff;
-color:black;
+
 font-weight:bold;
+
 cursor:pointer;
-border-radius:30px;
+
 transition:0.3s;
+
 }
 
 .hero button:hover{
+
 transform:scale(1.1);
+
 }
 
-/* PARTICLE BG */
-
-canvas{
-position:absolute;
-top:0;
-left:0;
-z-index:-1;
-}
-
-/* SECTIONS */
+/* ---------- SECTIONS ---------- */
 
 section{
-padding:100px 12%;
+
+padding:80px 8%;
+
 }
 
-.title{
-font-size:34px;
-margin-bottom:40px;
+.section-title{
+
+font-size:30px;
+
+margin-bottom:35px;
+
+text-align:center;
+
 }
 
-/* PROJECTS */
+/* ---------- PROJECTS ---------- */
 
 .projects{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
 }
 
 .card{
-background:#151515;
-padding:25px;
+
+background:#141414;
+
+padding:22px;
+
 border-radius:10px;
+
 transition:0.3s;
+
 border:1px solid transparent;
+
 }
 
 .card:hover{
-transform:translateY(-10px);
+
+transform:translateY(-8px);
+
 border:1px solid #00e5ff;
-box-shadow:0 0 20px #00e5ff44;
+
+box-shadow:0 0 15px #00e5ff55;
+
 }
 
-/* TECH */
+/* ---------- TECH STACK ---------- */
 
 .tech{
+
 display:flex;
+
 flex-wrap:wrap;
-gap:15px;
+
+gap:12px;
+
+justify-content:center;
+
 }
 
 .tech span{
-background:#1c1c1c;
-padding:10px 18px;
+
+background:#1b1b1b;
+
+padding:8px 14px;
+
 border-radius:20px;
-transition:0.3s;
+
+font-size:14px;
+
 }
 
 .tech span:hover{
+
 background:#00e5ff;
+
 color:black;
+
 }
 
-/* COUNTERS */
-
-.stats{
-display:flex;
-gap:40px;
-margin-top:40px;
-}
-
-.stat{
-font-size:28px;
-}
-
-/* FOOTER */
+/* ---------- FOOTER ---------- */
 
 footer{
-padding:40px;
+
+padding:30px;
+
 text-align:center;
+
 background:#050505;
+
 color:#777;
+
+font-size:14px;
+
+}
+
+/* ---------- MOBILE OPTIMIZATION ---------- */
+
+@media (max-width:768px){
+
+.hero h1{
+font-size:32px;
+}
+
+.brand-logo{
+width:200px;
+height:200px;
+}
+
+nav{
+display:none;
+}
+
 }
 
 </style>
@@ -183,76 +294,74 @@ color:#777;
 <body>
 
 <header>
-<div class="logo">YOUR BRAND</div>
+
+<div class="logo-small">
+
+<img src="logo.png" alt="logo">
+
+<strong>YOUR BRAND</strong>
+
+</div>
+
 <nav>
+
 <a href="#about">About</a>
+
 <a href="#projects">Projects</a>
+
 <a href="#tech">Tech</a>
+
 </nav>
+
 </header>
 
 <div class="hero">
 
-<canvas id="bg"></canvas>
+<div class="brand-logo">
 
-<h1>Building Digital Worlds</h1>
+<img src="logo.png" alt="Brand Logo">
+
+</div>
+
+<h1>Your Brand Name</h1>
 
 <p>
-Developer building games, systems and future technology platforms.
+Short brand statement. What you build and why it matters.
 </p>
 
-<button onclick="scrollToSection()">Explore</button>
+<button onclick="scrollDown()">Explore</button>
 
 </div>
 
 <section id="about">
 
-<h2 class="title">About</h2>
+<h2 class="section-title">About</h2>
 
-<p>
-Write about yourself here. Your vision, mission and what you want to build.
+<p style="text-align:center;max-width:700px;margin:auto;">
+Write about your vision, mission and what your projects aim to build.
 </p>
-
-<div class="stats">
-
-<div class="stat">
-<span id="p1">0</span>+
-<br>Projects
-</div>
-
-<div class="stat">
-<span id="p2">0</span>+
-<br>Experiments
-</div>
-
-<div class="stat">
-<span id="p3">0</span>+
-<br>Ideas
-</div>
-
-</div>
 
 </section>
 
 <section id="projects">
 
-<h2 class="title">Projects</h2>
+<h2 class="section-title">Projects</h2>
 
 <div class="projects">
 
 <div class="card">
 <h3>Project Name</h3>
-<p>Description of the project.</p>
+<p>Short description of the project.</p>
 </div>
 
 <div class="card">
 <h3>Project Name</h3>
-<p>Description of the project.</p>
+<p>Short description of the project.</p>
 </div>
 
 <div class="card">
 <h3>Project Name</h3>
-<p>Description of the project.</p>
+<p>Short description of the project.</p>
 </div>
 
 </div>
@@ -261,101 +370,39 @@ Write about yourself here. Your vision, mission and what you want to build.
 
 <section id="tech">
 
-<h2 class="title">Tech Stack</h2>
+<h2 class="section-title">Tech Stack</h2>
 
 <div class="tech">
 
 <span>JavaScript</span>
 <span>HTML</span>
 <span>CSS</span>
-<span>Game Development</span>
-<span>Web Systems</span>
+<span>Game Dev</span>
+<span>Systems</span>
 
 </div>
 
 </section>
 
 <footer>
+
 © 2026 Your Brand
+
 </footer>
 
 <script>
 
-/* smooth scroll */
+function scrollDown(){
 
-function scrollToSection(){
 document.getElementById("about").scrollIntoView({
+
 behavior:"smooth"
-});
-}
 
-/* animated counters */
-
-function counter(id,target){
-
-let element=document.getElementById(id)
-let count=0
-
-let interval=setInterval(()=>{
-
-count++
-element.innerText=count
-
-if(count>=target){
-clearInterval(interval)
-}
-
-},30)
-
-}
-
-counter("p1",5)
-counter("p2",20)
-counter("p3",100)
-
-/* particle background */
-
-let canvas=document.getElementById("bg")
-let ctx=canvas.getContext("2d")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let particles=[]
-
-for(let i=0;i<80;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2
-})
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-ctx.fillStyle="#00e5ff"
-
-particles.forEach(p=>{
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
-ctx.fill()
-
-p.y+=0.3
-
-if(p.y>canvas.height){
-p.y=0
-}
 })
 
-requestAnimationFrame(animate)
-
 }
-
-animate()
 
 </script>
 
 </body>
-                    </html>
+</html>
