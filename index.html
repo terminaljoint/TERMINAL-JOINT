@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -15,12 +16,12 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 scroll-behavior:smooth;
 }
 
 body{
-background:#060606;
+background:#000;
 color:white;
 overflow-x:hidden;
 }
@@ -28,16 +29,22 @@ overflow-x:hidden;
 /* NAVBAR */
 
 header{
+
 position:fixed;
 top:0;
 width:100%;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:16px 30px;
-background:rgba(0,0,0,0.65);
-backdrop-filter:blur(12px);
+
+padding:16px 40px;
+
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(20px);
+
 z-index:1000;
+
 }
 
 .brand{
@@ -47,236 +54,207 @@ gap:10px;
 }
 
 .brand img{
-width:36px;
+width:32px;
+border-radius:6px;
 }
 
 nav a{
-margin-left:20px;
+
+margin-left:25px;
+color:#ccc;
 text-decoration:none;
-color:#aaa;
 font-size:14px;
-position:relative;
+
 }
 
-nav a::after{
-content:"";
-position:absolute;
-bottom:-4px;
-left:0;
-width:0;
-height:2px;
-background:#00e5ff;
-transition:0.3s;
-}
-
-nav a:hover::after{
-width:100%;
+nav a:hover{
+color:white;
 }
 
 /* HERO */
 
 .hero{
-height:120vh;
+
+height:110vh;
+
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+
 text-align:center;
-position:relative;
-padding:20px;
+
+padding:40px;
+
 }
 
-.brand-logo{
-width:260px;
-height:260px;
-border-radius:50%;
+.hero-logo{
+
+width:220px;
+height:220px;
+
+border-radius:40px;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 background:#111;
-box-shadow:
-0 0 80px #00e5ff44,
-0 0 150px #00e5ff22;
-animation:logoPulse 6s infinite ease-in-out;
+
+box-shadow:0 30px 80px rgba(0,0,0,0.8);
+
+margin-bottom:40px;
+
 }
 
-.brand-logo img{
+.hero-logo img{
+
 width:70%;
-}
 
-@keyframes logoPulse{
-
-0%{transform:scale(1)}
-50%{transform:scale(1.05)}
-100%{transform:scale(1)}
-
-}
-
-/* LOGO SPOTLIGHT */
-
-.brand-logo::after{
-content:"";
-position:absolute;
-width:420px;
-height:420px;
-background:radial-gradient(circle,#00e5ff22,transparent);
-z-index:-1;
 }
 
 /* HERO TEXT */
 
 .hero h1{
-margin-top:25px;
-font-size:48px;
-background:linear-gradient(90deg,#00e5ff,#00ff9c);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+
+font-size:60px;
+font-weight:600;
+
+margin-bottom:10px;
+
 }
 
 .hero p{
-margin-top:10px;
+
+font-size:20px;
+color:#aaa;
+
 max-width:520px;
-color:#aaa;
-}
 
-/* SCROLL INDICATOR */
-
-.scroll-indicator{
-position:absolute;
-bottom:40px;
-font-size:12px;
-color:#aaa;
-animation:scrollHint 2s infinite;
-}
-
-@keyframes scrollHint{
-0%{opacity:0}
-50%{opacity:1}
-100%{opacity:0}
-}
-
-/* PARTICLES */
-
-canvas{
-position:absolute;
-top:0;
-left:0;
-z-index:-2;
 }
 
 /* SECTIONS */
 
 section{
-padding:120px 12%;
+
+padding:140px 12%;
+text-align:center;
+
 opacity:0;
-transform:translateY(80px);
+transform:translateY(40px);
 transition:1s;
-position:relative;
+
 }
 
 section.show{
+
 opacity:1;
 transform:translateY(0);
+
 }
+
+/* TITLE */
 
 .title{
-font-size:36px;
+
+font-size:44px;
+font-weight:600;
+
 margin-bottom:50px;
-text-align:center;
-}
 
-/* GLOW DIVIDER */
-
-section::before{
-content:"";
-position:absolute;
-top:0;
-left:50%;
-transform:translateX(-50%);
-width:120px;
-height:2px;
-background:linear-gradient(90deg,transparent,#00e5ff,transparent);
 }
 
 /* PROJECT GRID */
 
 .projects{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:40px;
+
 }
 
 /* CARD */
 
 .card{
-background:rgba(20,20,20,0.7);
-border-radius:18px;
+
+background:#111;
+
+border-radius:30px;
+
 overflow:hidden;
-backdrop-filter:blur(15px);
-border:1px solid #222;
+
+box-shadow:
+0 20px 50px rgba(0,0,0,0.6);
+
 transition:0.4s;
-animation:cardFloat 6s infinite ease-in-out;
+
 }
 
-@keyframes cardFloat{
-0%{transform:translateY(0)}
-50%{transform:translateY(-6px)}
-100%{transform:translateY(0)}
+.card:hover{
+
+transform:translateY(-10px);
+
 }
 
 /* IMAGE */
 
 .card-image{
-height:180px;
-background:#141414;
-display:flex;
-align-items:center;
-justify-content:center;
+
+height:200px;
+
 }
 
 .card-image img{
+
 width:100%;
 height:100%;
 object-fit:cover;
+
 }
 
 /* CONTENT */
 
 .card-content{
-padding:24px;
+
+padding:30px;
+
 }
 
 .card-content h3{
-margin-bottom:8px;
+
+font-size:22px;
+margin-bottom:10px;
+
 }
 
 .card-content p{
+
 color:#aaa;
+
 }
 
-/* FUTURE PLACEHOLDER */
-
-.coming{
-opacity:0.6;
-border:1px dashed #444;
-}
-
-/* FUTURE SECTION */
+/* FUTURE */
 
 .future{
-text-align:center;
+
+font-size:18px;
+color:#aaa;
 max-width:700px;
 margin:auto;
-color:#aaa;
+
 }
 
 /* FOOTER */
 
 footer{
-padding:40px;
+
+padding:60px;
 text-align:center;
-background:#050505;
 color:#666;
+
 }
 
 /* MOBILE */
@@ -284,20 +262,16 @@ color:#666;
 @media(max-width:768px){
 
 .hero h1{
-font-size:32px;
+font-size:36px;
 }
 
-.brand-logo{
-width:180px;
-height:180px;
+.hero-logo{
+width:150px;
+height:150px;
 }
 
 nav{
 display:none;
-}
-
-.projects{
-grid-template-columns:1fr;
 }
 
 }
@@ -311,23 +285,25 @@ grid-template-columns:1fr;
 <header>
 
 <div class="brand">
+
 <img src="logo.jpg">
 <b>Terminal Joint</b>
+
 </div>
 
 <nav>
+
 <a href="#vision">Vision</a>
 <a href="#projects">Projects</a>
 <a href="#future">Future</a>
+
 </nav>
 
 </header>
 
 <div class="hero">
 
-<canvas id="bg"></canvas>
-
-<div class="brand-logo">
+<div class="hero-logo">
 <img src="logo2.jpg">
 </div>
 
@@ -337,16 +313,16 @@ grid-template-columns:1fr;
 Building digital systems, platforms and games.
 </p>
 
-<div class="scroll-indicator">scroll ↓</div>
-
 </div>
 
 <section id="vision">
 
 <h2 class="title">Vision</h2>
 
-<p style="text-align:center;max-width:700px;margin:auto;color:#aaa;">
-Developing systems for real-world needs.
+<p class="future">
+
+Developing systems for real-world needs and future digital platforms.
+
 </p>
 
 </section>
@@ -364,32 +340,39 @@ Developing systems for real-world needs.
 </div>
 
 <div class="card-content">
+
 <h3>Terminal Joint CBT</h3>
+
 <p>
-Practice for Computer Based Tests with a realistic exam interface.
+Practice Computer Based Tests with a realistic exam interface.
 </p>
-</div>
 
 </div>
 
-<div class="card coming">
+</div>
+
+<div class="card">
 
 <div class="card-image"></div>
 
 <div class="card-content">
+
 <h3>Future System</h3>
 <p>Coming soon</p>
-</div>
 
 </div>
 
-<div class="card coming">
+</div>
+
+<div class="card">
 
 <div class="card-image"></div>
 
 <div class="card-content">
+
 <h3>Future System</h3>
 <p>Coming soon</p>
+
 </div>
 
 </div>
@@ -403,7 +386,9 @@ Practice for Computer Based Tests with a realistic exam interface.
 <h2 class="title">Future Systems</h2>
 
 <p class="future">
-Upcoming platforms and digital systems under development.
+
+More platforms and digital tools are under development.
+
 </p>
 
 </section>
@@ -416,7 +401,7 @@ Upcoming platforms and digital systems under development.
 
 <script>
 
-/* SCROLL REVEAL */
+/* APPLE STYLE SCROLL REVEAL */
 
 let sections=document.querySelectorAll("section")
 
@@ -426,67 +411,18 @@ sections.forEach(sec=>{
 
 let top=sec.getBoundingClientRect().top
 
-if(top<window.innerHeight-120){
+if(top<window.innerHeight-100){
+
 sec.classList.add("show")
+
 }
 
 })
 
 })
-
-/* PARTICLES */
-
-let canvas=document.getElementById("bg")
-let ctx=canvas.getContext("2d")
-
-function resize(){
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-}
-
-resize()
-window.addEventListener("resize",resize)
-
-let particles=[]
-
-for(let i=0;i<120;i++){
-
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-speed:Math.random()*0.6
-})
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-ctx.fillStyle="#00e5ff"
-
-particles.forEach(p=>{
-
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
-ctx.fill()
-
-p.y+=p.speed
-
-if(p.y>canvas.height){
-p.y=0
-}
-
-})
-
-requestAnimationFrame(animate)
-
-}
-
-animate()
 
 </script>
 
 </body>
-</html>
+
+  </html>
