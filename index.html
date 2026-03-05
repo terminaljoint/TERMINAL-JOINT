@@ -18,26 +18,9 @@ font-family:Segoe UI,sans-serif;
 }
 
 body{
-background:#0b0b0b;
+background:#0a0a0a;
 color:white;
 overflow-x:hidden;
-}
-
-/* SCROLL PROGRESS BAR */
-
-.progress{
-
-position:fixed;
-top:0;
-left:0;
-
-height:4px;
-width:0%;
-
-background:#00e5ff;
-
-z-index:2000;
-
 }
 
 /* NAVBAR */
@@ -46,7 +29,6 @@ header{
 
 position:fixed;
 top:0;
-
 width:100%;
 
 display:flex;
@@ -55,14 +37,14 @@ align-items:center;
 
 padding:15px 25px;
 
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 
 z-index:1000;
 
 }
 
-.logo-area{
+.logo-small{
 
 display:flex;
 align-items:center;
@@ -70,10 +52,8 @@ gap:10px;
 
 }
 
-.logo-area img{
-
-width:38px;
-
+.logo-small img{
+width:36px;
 }
 
 nav a{
@@ -85,16 +65,14 @@ text-decoration:none;
 }
 
 nav a:hover{
-
 color:#00e5ff;
-
 }
 
 /* HERO */
 
 .hero{
 
-height:100vh;
+height:120vh;
 
 display:flex;
 flex-direction:column;
@@ -103,40 +81,40 @@ align-items:center;
 
 text-align:center;
 
-padding:20px;
+position:relative;
 
 }
 
 .brand-logo{
 
-width:230px;
-height:230px;
+width:260px;
+height:260px;
 
 border-radius:50%;
-
-background:#111;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-box-shadow:0 0 60px #00e5ff33;
+background:#111;
 
-transition:0.4s;
+box-shadow:
+0 0 60px #00e5ff55,
+0 0 120px #00e5ff22;
+
+transition:0.5s;
 
 }
 
 .brand-logo img{
-
 width:70%;
-
 }
 
 .hero h1{
 
-font-size:42px;
+margin-top:25px;
 
-margin-top:20px;
+font-size:50px;
 
 background:linear-gradient(90deg,#00e5ff,#00ff9c);
 -webkit-background-clip:text;
@@ -146,9 +124,24 @@ background:linear-gradient(90deg,#00e5ff,#00ff9c);
 
 .hero p{
 
-margin-top:10px;
-max-width:500px;
+margin-top:12px;
+
+max-width:520px;
+
 color:#aaa;
+
+}
+
+/* PARTICLE BACKGROUND */
+
+canvas{
+
+position:absolute;
+
+top:0;
+left:0;
+
+z-index:-1;
 
 }
 
@@ -156,16 +149,16 @@ color:#aaa;
 
 section{
 
-padding:100px 10%;
+padding:120px 12%;
 
 opacity:0;
-transform:translateY(40px);
+transform:translateY(60px);
 
-transition:0.8s;
+transition:1s;
 
 }
 
-section.show{
+section.visible{
 
 opacity:1;
 transform:translateY(0);
@@ -174,7 +167,7 @@ transform:translateY(0);
 
 .title{
 
-font-size:30px;
+font-size:34px;
 margin-bottom:40px;
 
 }
@@ -185,9 +178,9 @@ margin-bottom:40px;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
-gap:22px;
+gap:25px;
 
 }
 
@@ -195,18 +188,37 @@ gap:22px;
 
 background:#151515;
 
-padding:25px;
+padding:28px;
 
-border-radius:10px;
+border-radius:12px;
 
-transition:0.3s;
+transition:0.4s;
 
 }
 
 .card:hover{
 
-transform:translateY(-8px);
-box-shadow:0 0 20px #00e5ff44;
+transform:translateY(-10px) scale(1.03);
+
+box-shadow:0 0 25px #00e5ff44;
+
+}
+
+/* FLOATING PROJECT ANIMATION */
+
+.card:nth-child(2){
+animation:float 5s infinite ease-in-out;
+}
+
+.card:nth-child(3){
+animation:float 6s infinite ease-in-out;
+}
+
+@keyframes float{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
 
 }
 
@@ -214,7 +226,8 @@ box-shadow:0 0 20px #00e5ff44;
 
 footer{
 
-padding:35px;
+padding:40px;
+
 text-align:center;
 
 background:#050505;
@@ -228,7 +241,7 @@ color:#777;
 @media(max-width:768px){
 
 .hero h1{
-font-size:30px;
+font-size:32px;
 }
 
 .brand-logo{
@@ -248,11 +261,9 @@ display:none;
 
 <body>
 
-<div class="progress" id="progress"></div>
-
 <header>
 
-<div class="logo-area">
+<div class="logo-small">
 
 <img src="logo.png">
 
@@ -264,13 +275,15 @@ display:none;
 
 <a href="#vision">Vision</a>
 <a href="#projects">Projects</a>
-<a href="#roadmap">Roadmap</a>
+<a href="#future">Future</a>
 
 </nav>
 
 </header>
 
 <div class="hero">
+
+<canvas id="bg"></canvas>
 
 <div class="brand-logo" id="logo">
 
@@ -282,7 +295,7 @@ display:none;
 
 <p>
 
-Short brand description.
+Building systems, games and digital worlds.
 
 </p>
 
@@ -294,7 +307,7 @@ Short brand description.
 
 <p>
 
-Your mission and philosophy.
+Explain your mission here.
 
 </p>
 
@@ -307,7 +320,7 @@ Your mission and philosophy.
 <div class="projects">
 
 <div class="card">
-<h3>Project</h3>
+<h3>Main Project</h3>
 <p>Description</p>
 </div>
 
@@ -325,13 +338,13 @@ Your mission and philosophy.
 
 </section>
 
-<section id="roadmap">
+<section id="future">
 
-<h2 class="title">Roadmap</h2>
+<h2 class="title">Future Systems</h2>
 
 <p>
 
-Future development phases.
+Explain future ideas here.
 
 </p>
 
@@ -345,20 +358,6 @@ Future development phases.
 
 <script>
 
-/* SCROLL PROGRESS BAR */
-
-window.addEventListener("scroll",()=>{
-
-let scroll=window.scrollY
-
-let height=document.body.scrollHeight-window.innerHeight
-
-let progress=(scroll/height)*100
-
-document.getElementById("progress").style.width=progress+"%"
-
-})
-
 /* SCROLL REVEAL */
 
 let sections=document.querySelectorAll("section")
@@ -369,9 +368,9 @@ sections.forEach(sec=>{
 
 let top=sec.getBoundingClientRect().top
 
-if(top<window.innerHeight-100){
+if(top<window.innerHeight-120){
 
-sec.classList.add("show")
+sec.classList.add("visible")
 
 }
 
@@ -387,9 +386,59 @@ window.addEventListener("scroll",()=>{
 
 let scroll=window.scrollY
 
-logo.style.transform="scale("+(1-scroll*0.0005)+")"
+logo.style.transform="scale("+(1-scroll*0.0004)+") rotate("+scroll*0.02+"deg)"
 
 })
+
+/* PARTICLE BACKGROUND */
+
+let canvas=document.getElementById("bg")
+
+let ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
+for(let i=0;i<90;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+speed:Math.random()*0.5
+
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="#00e5ff"
+
+particles.forEach(p=>{
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+ctx.fill()
+
+p.y+=p.speed
+
+if(p.y>canvas.height){
+p.y=0
+}
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
 
 </script>
 
