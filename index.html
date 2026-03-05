@@ -6,19 +6,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminal Joint</title>
+<title>Your Brand</title>
 
 <style>
+
+/* GLOBAL */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
+font-family:Segoe UI, sans-serif;
 }
 
 body{
-background:#0a0a0a;
+background:#070707;
 color:white;
 overflow-x:hidden;
 }
@@ -35,16 +37,16 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:15px 25px;
+padding:15px 30px;
 
 background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 z-index:1000;
 
 }
 
-.logo-small{
+.brand{
 
 display:flex;
 align-items:center;
@@ -52,15 +54,17 @@ gap:10px;
 
 }
 
-.logo-small img{
-width:36px;
+.brand img{
+width:35px;
 }
 
 nav a{
 
-margin-left:18px;
-color:#aaa;
+margin-left:20px;
 text-decoration:none;
+color:#aaa;
+
+transition:0.3s;
 
 }
 
@@ -83,6 +87,8 @@ text-align:center;
 
 position:relative;
 
+padding:20px;
+
 }
 
 .brand-logo{
@@ -99,8 +105,8 @@ align-items:center;
 background:#111;
 
 box-shadow:
-0 0 60px #00e5ff55,
-0 0 120px #00e5ff22;
+0 0 70px #00e5ff55,
+0 0 140px #00e5ff22;
 
 transition:0.5s;
 
@@ -114,7 +120,7 @@ width:70%;
 
 margin-top:25px;
 
-font-size:50px;
+font-size:48px;
 
 background:linear-gradient(90deg,#00e5ff,#00ff9c);
 -webkit-background-clip:text;
@@ -125,19 +131,16 @@ background:linear-gradient(90deg,#00e5ff,#00ff9c);
 .hero p{
 
 margin-top:12px;
-
 max-width:520px;
-
 color:#aaa;
 
 }
 
-/* PARTICLE BACKGROUND */
+/* PARTICLE BG */
 
 canvas{
 
 position:absolute;
-
 top:0;
 left:0;
 
@@ -158,7 +161,7 @@ transition:1s;
 
 }
 
-section.visible{
+section.show{
 
 opacity:1;
 transform:translateY(0);
@@ -167,8 +170,10 @@ transform:translateY(0);
 
 .title{
 
-font-size:34px;
-margin-bottom:40px;
+font-size:36px;
+margin-bottom:50px;
+
+text-align:center;
 
 }
 
@@ -178,47 +183,117 @@ margin-bottom:40px;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
-gap:25px;
+gap:35px;
 
 }
 
+/* CARD */
+
 .card{
 
-background:#151515;
+background:rgba(20,20,20,0.8);
 
-padding:28px;
+border-radius:16px;
 
-border-radius:12px;
+overflow:hidden;
+
+border:1px solid #222;
 
 transition:0.4s;
+
+transform-style:preserve-3d;
+
+backdrop-filter:blur(10px);
 
 }
 
 .card:hover{
 
-transform:translateY(-10px) scale(1.03);
-
-box-shadow:0 0 25px #00e5ff44;
+box-shadow:0 0 35px #00e5ff44;
 
 }
 
-/* FLOATING PROJECT ANIMATION */
+/* CARD IMAGE */
 
-.card:nth-child(2){
-animation:float 5s infinite ease-in-out;
+.card-image{
+
+height:180px;
+
+background:#1a1a1a;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+overflow:hidden;
+
 }
 
-.card:nth-child(3){
-animation:float 6s infinite ease-in-out;
+.card-image img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
 }
 
-@keyframes float{
+/* CARD CONTENT */
 
-0%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-100%{transform:translateY(0)}
+.card-content{
+
+padding:25px;
+
+}
+
+.card-content h3{
+
+margin-bottom:10px;
+
+}
+
+.card-content p{
+
+color:#aaa;
+margin-bottom:15px;
+
+}
+
+.card-content button{
+
+padding:9px 20px;
+
+border:none;
+
+border-radius:20px;
+
+background:#00e5ff;
+
+cursor:pointer;
+
+}
+
+/* COMING SOON */
+
+.coming{
+
+opacity:0.6;
+
+border:1px dashed #444;
+
+}
+
+/* FUTURE SECTION */
+
+.future{
+
+text-align:center;
+
+max-width:700px;
+margin:auto;
+
+color:#aaa;
 
 }
 
@@ -232,7 +307,7 @@ text-align:center;
 
 background:#050505;
 
-color:#777;
+color:#666;
 
 }
 
@@ -253,6 +328,10 @@ nav{
 display:none;
 }
 
+.projects{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
@@ -263,7 +342,7 @@ display:none;
 
 <header>
 
-<div class="logo-small">
+<div class="brand">
 
 <img src="logo.png">
 
@@ -295,7 +374,7 @@ display:none;
 
 <p>
 
-Building systems, games and digital worlds.
+Building systems, games and digital platforms.
 
 </p>
 
@@ -305,9 +384,9 @@ Building systems, games and digital worlds.
 
 <h2 class="title">Vision</h2>
 
-<p>
+<p style="text-align:center;max-width:700px;margin:auto;color:#aaa;">
 
-Explain your mission here.
+Write your mission here. Even a short vision works.
 
 </p>
 
@@ -320,19 +399,49 @@ Explain your mission here.
 <div class="projects">
 
 <div class="card">
-<h3>Terminal Joint's CBT practice interface</h3>
-<p>Practice for your CBT exams with real user interface</p>
-  <a href="https://terminaljoint.github.io/CBT-Practice/">Click here to use our CBT interface</a>
+
+<div class="card-image">
+<img src="project1.jpg">
 </div>
 
-<div class="card">
-<h3>Future Project</h3>
-<p>Coming soon</p>
+<div class="card-content">
+
+<h3>Main Project</h3>
+
+<p>Short description.</p>
+
+<button>Explore</button>
+
 </div>
 
-<div class="card">
+</div>
+
+<div class="card coming">
+
+<div class="card-image"></div>
+
+<div class="card-content">
+
 <h3>Future Project</h3>
+
 <p>Coming soon</p>
+
+</div>
+
+</div>
+
+<div class="card coming">
+
+<div class="card-image"></div>
+
+<div class="card-content">
+
+<h3>Future Project</h3>
+
+<p>Coming soon</p>
+
+</div>
+
 </div>
 
 </div>
@@ -343,9 +452,9 @@ Explain your mission here.
 
 <h2 class="title">Future Systems</h2>
 
-<p>
+<p class="future">
 
-Explain future ideas here.
+Describe future ideas, upcoming systems or technologies.
 
 </p>
 
@@ -371,7 +480,7 @@ let top=sec.getBoundingClientRect().top
 
 if(top<window.innerHeight-120){
 
-sec.classList.add("visible")
+sec.classList.add("show")
 
 }
 
@@ -379,7 +488,7 @@ sec.classList.add("visible")
 
 })
 
-/* LOGO PARALLAX */
+/* LOGO SCROLL EFFECT */
 
 let logo=document.getElementById("logo")
 
@@ -402,7 +511,7 @@ canvas.height=window.innerHeight
 
 let particles=[]
 
-for(let i=0;i<90;i++){
+for(let i=0;i<100;i++){
 
 particles.push({
 
@@ -441,8 +550,40 @@ requestAnimationFrame(animate)
 
 animate()
 
+/* 3D CARD EFFECT */
+
+let cards=document.querySelectorAll(".card")
+
+cards.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+let rect=card.getBoundingClientRect()
+
+let x=e.clientX-rect.left
+let y=e.clientY-rect.top
+
+let centerX=rect.width/2
+let centerY=rect.height/2
+
+let rotateX=(y-centerY)/12
+let rotateY=(centerX-x)/12
+
+card.style.transform=
+`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
+
+})
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0) rotateY(0)"
+
+})
+
+})
+
 </script>
 
 </body>
 
-</html>
+  </html>
